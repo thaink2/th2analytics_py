@@ -12,7 +12,6 @@ class ForecastingAPI:
         """
         Generate a forecast by sending a request to the API.
         """
-        base_url = "https://apis-dev.thaink2.fr/"
         endpoint = "thaink2/forecasting"
         url = f"{self.base_url}{endpoint}"
         headers = {
@@ -20,7 +19,7 @@ class ForecastingAPI:
             "Content-Type": "application/json"
         }
         payload = {
-            "actuals": actuals,
+            "actuals": actuals.to_json(orient="records", date_format = "iso"),
             "fcast_horizon": fcast_horizon,
             "group_target": group_target,
             "target_var": target_var,
