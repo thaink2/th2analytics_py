@@ -1,4 +1,7 @@
 import unittest
+import requests
+import pandas as pd
+import numpy as np
 from th2analytics.forecasting import ForecastingAPI
 
 class TestForecastingAPI(unittest.TestCase):
@@ -9,11 +12,21 @@ class TestForecastingAPI(unittest.TestCase):
         # Mock inputs and assert behavior
         actuals = [100, 200, 300]
         fcast_horizon = 10
-        group_target = "Region"
-        target_var = "Sales"
-        date_var = "Date"
-        models_list = ["ARIMA", "LSTM"]
+    #    group_target = "Region"
+        target_var = "value"
+        date_var = "date"
+        models_list = ["xgboost"]
+        api_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MzQ1MzkxMjEsInVzZXJfbWFpbCI6ImZhcmlkLmF6b3Vhb3VAdGhhaW5rMi5jb20iLCJ0YXJnZXRfc2VydmljZSI6ImZvcmVjYXN0aW5nIiwiYWRkaXRpb25faW5mbyI6InRlc3QifQ.SlzjcfMEvP4zu4MpY6p_d3nZVaYhIihQEor-yCu6A9M" # get your token here: https:\\opensource.thaink2.com\app\th2token
+        # Generate random time-series data
+        np.random.seed(42)
+        dates = pd.date_range(start='2022-01-01', periods=100, freq='D')
+        values = np.random.randn(100).cumsum()
+        # Create a DataFrame from the generated data
+        input_data = pd.DataFrame({'date': dates, 'value': values})
 
+        from th2analytics.forecasting import ForecastingAPI
+
+        ForecastingAPI(api_token = api_token, input_data = input_data)
         # Simulate a response or mock API call for testing
         # (You can use `unittest.mock` to mock the requests library)
 

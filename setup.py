@@ -8,9 +8,9 @@ setup(
     long_description_content_type="text/markdown",
     author="Farid Azouaou",
     author_email="contact@thaink2.com",
-    url="https://github.com/thaink2/th2analytics",  # Replace with your repo
+    url="https://github.com/thaink2/th2analytics_py", 
     packages=find_packages(),
-    install_requires=["requests"],  # Dependencies
+    install_requires=["requests"], 
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
