@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: th2analytics
-Version: 0.0.3
+Version: 0.0.6
 Summary: A Python package for interacting with the thaink2 analytics APIs
 Home-page: https://github.com/thaink2/th2analytics_py
 Author: Farid Azouaou
@@ -39,8 +39,7 @@ Install the package using pip:
 pip install th2analytics
 ```
 
-d,ldz,l,zdz
-
+A bearer token is needed in order to perform the API request, use the following url to generate a valid token [thaink2 token generator](https://opensource.thaink2.com/app/th2token)
 
 ```python
 from th2analytics.forecasting import ForecastingAPI
@@ -71,6 +70,8 @@ forecast = api.th2forecast_api(
     models_list = ["xgboost"]
 )
 # Print the forecast
-print("Forecast Results:", forecast)
+
+forecast_df = pd.json_normalize(forecast)
+print(forecast_df)
 
 ```

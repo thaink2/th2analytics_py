@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="th2analytics",
-    version="0.0.4",
+    version="0.0.6",
     description="A Python package for interacting with the thaink2 analytics APIs",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
