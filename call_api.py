@@ -25,5 +25,9 @@ forecast = api.th2forecast_api(
     date_var = "date",
     models_list = ["xgboost"]
 )
+
+forecast_df = pd.json_normalize(forecast)
+
+forecast_df.to_csv("fcast_results.csv", index=False)
 # Print the forecast
-print("Forecast Results:", forecast)
+print(forecast_df)

@@ -24,8 +24,9 @@ Install the package using pip:
 pip install th2analytics
 ```
 
-d,ldz,l,zdz
+A bearer token is needed in order to perform the API request, use the following to generate a valid token:
 
+* [thaink² token generator](https:\\opensource.thaink2.com\app\th2token)
 
 ```python
 from th2analytics.forecasting import ForecastingAPI
@@ -56,6 +57,8 @@ forecast = api.th2forecast_api(
     models_list = ["xgboost"]
 )
 # Print the forecast
-print("Forecast Results:", forecast)
+
+forecast_df = pd.json_normalize(forecast)
+print(forecast_df)
 
 ```
