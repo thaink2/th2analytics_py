@@ -1,6 +1,6 @@
 [project]
 name = "th2analytics"
-version = "0.0.12"
+version = "0.0.13"
 authors = [
   { name="Farid Azouaou", email="farid.azouaou@thaink2.com" },
 ]
@@ -9,6 +9,7 @@ readme = "README.md"
 requires-python = ">=3.8"
 dependencies = [
     "requests",
+    "plotly"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

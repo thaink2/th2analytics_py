@@ -1,4 +1,5 @@
 import requests
+import plotly.graph_objects as go
 
 class ForecastingAPI:
     def __init__(self, base_url, api_token):
@@ -35,3 +36,62 @@ class ForecastingAPI:
             return response.json()  # Return the parsed JSON response
         else:
             response.raise_for_status()  # Raise an exception for HTTP errors
+
+
+def split_forecasts_by_model(forecast_df, model_dict):
+    """
+    Splits forecast data by model using a model dictionary.
+
+    Args:
+        forecast_df (pd.DataFrame): The DataFrame containing forecast data.
+        model_dict (dict): Dictionary mapping model IDs to model names.
+
+    Returns:
+        dict: A dictionary where keys are model names and values are DataFrames of forecast data for each model.
+    """
+    return {
+        model_dict[model_id]: forecast_df[forecast_df['.model_id'] == model_id]
+        for model_id in model_dict
+    }
+
+def create_line_plot(filtered_data, forecasts, title, yaxis_title, zoom_range):
+    """
+    Creates a line plot for visualizing actuals and forecast data.
+
+    Args:
+        filtered_data (pd.DataFrame): Historical data.
+        forecasts (dict): Dictionary of forecast data by model.
+        title (str): Title of the plot.
+        yaxis_title (str): Label for the y-axis.
+        zoom_range (list): Range for the x-axis zoom.
+
+    Returns:
+        plotly.graph_objects.Figure: The generated line plot.
+    """
+    fig = go.Figure()
+    fig.add_trace(go.Scatter(
+        x=filtered_data['date'],
+        y=filtered_data['value'],
+        mode='lines+markers',
+        name='Actuals',
+        marker=dict(color='blue', size=6),
+        line=dict(color='blue', width=2)
+    ))
+    for model, model_data in forecasts.items():
+        fig.add_trace(go.Scatter(
+            x=model_data['date'],
+            y=model_data['value'],
+            mode='lines+markers',
+            name=f'{model}',
+            marker=dict(size=5),
+            line=dict(width=2)
+        ))
+    fig.update_layout(
+        title=title,
+        xaxis_title="Date",
+        yaxis_title=yaxis_title,
+        template="plotly_white",
+        showlegend=True,
+        xaxis=dict(range=zoom_range)
+    )
+    return fig
