@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: th2analytics
-Version: 0.0.12
+Version: 0.0.14
 Summary: A Python package for interacting with the thaink2 analytics APIs
 Author-email: Farid Azouaou <farid.azouaou@thaink2.com>
 Project-URL: Homepage, https://github.com/thaink2/th2analytics_py
@@ -12,6 +12,7 @@ Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 Requires-Dist: requests
+Requires-Dist: plotly
 
 # **th2analytics**
 
