@@ -16,7 +16,7 @@ class TestForecastingAPI(unittest.TestCase):
         target_var = "value"
         date_var = "date"
         models_list = ["xgboost"]
-        api_token = "*******************" # get your token here: https:\\opensource.thaink2.com\app\th2token
+        api_token = "*******************" # get your token here: https://clever.thaink2.fr/app_direct/th2token/
         # Generate random time-series data
         np.random.seed(42)
         dates = pd.date_range(start='2022-01-01', periods=100, freq='D')

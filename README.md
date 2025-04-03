@@ -24,14 +24,14 @@ Install the package using pip:
 pip install th2analytics
 ```
 
-A bearer token is needed in order to perform the API request, use the following url to generate a valid token [thaink2 token generator](https://opensource.thaink2.com/app/th2token)
+A bearer token is needed in order to perform the API request, use the following url to generate a valid token [thaink2 token generator](https://clever.thaink2.fr/app_direct/th2token/)
 
 ```python
 from th2analytics.forecasting import ForecastingAPI
 import numpy as np
 import pandas as pd
 
-api_token = "************" # get your token here: https:\\opensource.thaink2.com\app\th2token
+api_token = "************" # get your token here: https://clever.thaink2.fr/app_direct/th2token/
 
 
 # Initialize the API wrapper
